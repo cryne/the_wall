@@ -8,8 +8,8 @@ package the_wall;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.File;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JPanel;
 
 /**
  *
@@ -24,7 +24,6 @@ public class inicio extends javax.swing.JFrame {
         initComponents();
         File n=new File("./wall.PNG");
         Image img=Toolkit.getDefaultToolkit().createImage(n.getPath()).getScaledInstance(254, 384, 0);
-       
         poster.setIcon(new ImageIcon(img));
     }
 

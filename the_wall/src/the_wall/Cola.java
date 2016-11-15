@@ -9,26 +9,29 @@ package the_wall;
  *
  * @author admin
  */
-public class List {
-    
-    Node head;
+public class Cola {
 
-    public List(Node head) {
-        this.head = head;
+    Node Head;
+
+    public Cola(Node Head) {
+        this.Head = Head;
     }
 
     public Node getHead() {
-        return head;
+        return Head;
     }
 
-    public void setHead(Node head) {
-        this.head = head;
+    public void setHead(Node Head) {
+        this.Head = Head;
     }
 
     @Override
     public String toString() {
-        return "List{" + "head=" + head + '}';
+        return "Cola{" + "Head=" + Head + '}';
     }
-    
-    
+
+    void Queue(Node cola) {
+
+    }
+
 }
