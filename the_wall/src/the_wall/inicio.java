@@ -8,8 +8,16 @@ package the_wall;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.io.EOFException;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -25,8 +33,32 @@ public class inicio extends javax.swing.JFrame {
         initComponents();
         File n=new File("./wall.PNG");
         Image img=Toolkit.getDefaultToolkit().createImage(n.getPath()).getScaledInstance(254, 384, 0);
-        
         poster.setIcon(new ImageIcon(img));
+        File archivo = null;
+        try {
+            archivo = new File("./deportados.trump");
+            FileInputStream entrada = new FileInputStream(archivo);
+            ObjectInputStream objeto = new ObjectInputStream(entrada);
+            Mexicano temp;
+            DefaultComboBoxModel modelo = (DefaultComboBoxModel)this.cbx_revision.getModel();
+            try {
+                while((temp = (Mexicano)objeto.readObject()) != null){
+                lista.add(temp);
+                modelo.addElement(temp);
+                }
+            } catch (EOFException e) {
+            }
+            finally{
+            
+                objeto.close();
+                entrada.close();
+            
+            }
+            this.cbx_revision.setModel(modelo);
+        } catch (Exception ex)
+        {
+            ex.printStackTrace();
+        }
     }
 
     /**
@@ -117,6 +149,7 @@ public class inicio extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         poster = new javax.swing.JLabel();
+        cbx_revision = new javax.swing.JComboBox<>();
 
         tf_nation.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,6 +178,11 @@ public class inicio extends javax.swing.JFrame {
         jLabel2.setText("Registro");
 
         jButton1.setText("Deportar");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout RegistroLayout = new javax.swing.GroupLayout(Registro.getContentPane());
         Registro.getContentPane().setLayout(RegistroLayout);
@@ -1177,20 +1215,22 @@ public class inicio extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(230, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(241, 241, 241))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(82, 82, 82)
-                        .addComponent(jButton3)
+                        .addComponent(cbx_revision, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(poster, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(82, 82, 82)
+                                .addComponent(jButton3)))
                         .addGap(210, 210, 210))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(poster, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1202,7 +1242,8 @@ public class inicio extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(jButton3)
+                    .addComponent(cbx_revision, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(37, Short.MAX_VALUE))
         );
 
@@ -1255,6 +1296,54 @@ public class inicio extends javax.swing.JFrame {
         this.Aviones.setVisible(true);
         
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        Mexicano p = new Mexicano(tf_name.getText(),this.tf_nation.getText(),this.jdc_birth.toString(),this.cb_race.toString(),this.tf_countre_dep.getText(),false);
+        File archivo = new File("./deportados.trump");;
+
+        try {
+            if (!archivo.exists()) {
+                FileOutputStream salida = new FileOutputStream(archivo);
+                ObjectOutputStream objeto = new ObjectOutputStream(salida);
+                objeto.writeObject(p);
+                objeto.flush();
+                objeto.close();
+                salida.close();
+            } else {
+                FileInputStream entrada = new FileInputStream(archivo);
+                ObjectInputStream objeto = new ObjectInputStream(entrada);
+                Mexicano temp;
+                ArrayList<Mexicano> deporta = new ArrayList<Mexicano>();
+                try {
+                    while ((temp = (Mexicano) objeto.readObject()) != null) {
+                        deporta.add(temp);
+                    }
+                } catch (EOFException e) {
+                    //fin del archivo
+                }
+                objeto.close();
+                entrada.close();
+                deporta.add(p);
+
+                FileOutputStream salida = new FileOutputStream(archivo);
+                ObjectOutputStream objeto2 = new ObjectOutputStream(salida);
+
+                for (Mexicano t : deporta) {
+                    objeto2.writeObject(t);
+                }
+                objeto2.flush();
+                objeto2.close();
+                salida.close();
+            }
+            lista.add(p);
+            tf_name.setText("");
+            tf_nation.setText("");
+            tf_countre_dep.setText("");
+            JOptionPane.showMessageDialog(this, "El ilegal fue registrado exitosamente");
+
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -1355,6 +1444,7 @@ public class inicio extends javax.swing.JFrame {
     private javax.swing.JPanel Pasajero9;
     private javax.swing.JDialog Registro;
     private javax.swing.JComboBox<String> cb_race;
+    private javax.swing.JComboBox<String> cbx_revision;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -1372,4 +1462,5 @@ public class inicio extends javax.swing.JFrame {
     private javax.swing.JTextField tf_name;
     private javax.swing.JTextField tf_nation;
     // End of variables declaration//GEN-END:variables
+    ArrayList <Mexicano> lista=new ArrayList();
 }

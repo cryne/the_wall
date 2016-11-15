@@ -5,12 +5,14 @@
  */
 package the_wall;
 
+import java.io.Serializable;
+
 /**
  *
  * @author admin
  */
-public class Mexicano {
-    
+public class Mexicano implements Serializable {
+     private static final long SerialVersionUID=637L;
      protected String Name;
      protected String Nacional;
      protected String BirthDate;
