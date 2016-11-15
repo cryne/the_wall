@@ -12,11 +12,22 @@ package the_wall;
 public class Cola {
 
     Node Head;
-
+    Node fondo;
+    
     public Cola(Node Head) {
         this.Head = Head;
     }
+    
+    public Cola() {
+    }
 
+    public Node getFondo() {
+        return fondo;
+    }
+
+    public void setFondo(Node fondo) {
+        this.fondo = fondo;
+    }
     public Node getHead() {
         return Head;
     }
@@ -30,8 +41,19 @@ public class Cola {
         return "Cola{" + "Head=" + Head + '}';
     }
 
-    void Queue(Node cola) {
-
+    public void Queue(Object cola) {
+        Node nuevo=new Node(cola);
+        if (Head == null){
+            Head=nuevo;
+            fondo=nuevo;
+        }
+        fondo.setNext(nuevo);
+        fondo=nuevo;
+    }
+    public void Dequeue() {
+        if (Head !=null) {
+            Head=Head.getNext();
+        }
     }
 
 }

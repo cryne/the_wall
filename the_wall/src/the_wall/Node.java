@@ -19,6 +19,11 @@ public class Node {
         this.next = next;
     }
 
+    public Node(Object mex) {
+        Mexicano persona=(Mexicano)mex;
+        this.Persona = Persona;
+    }
+
     public Mexicano getPersona() {
         return Persona;
     }
