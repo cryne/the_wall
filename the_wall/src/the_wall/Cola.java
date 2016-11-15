@@ -50,10 +50,13 @@ public class Cola {
         fondo.setNext(nuevo);
         fondo=nuevo;
     }
-    public void Dequeue() {
+    public Object Dequeue() {
         if (Head !=null) {
+            Node x=Head;
             Head=Head.getNext();
+            return x.getPersona();
         }
+        return null;
     }
 
 }
