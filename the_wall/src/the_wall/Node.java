@@ -11,23 +11,20 @@ package the_wall;
  */
 public class Node {
     
-    int value;
+    Mexicano Persona;
     Node next;
 
-    public Node(int value, Node next) {
-        this.value = value;
+    public Node(Mexicano Persona, Node next) {
+        this.Persona = Persona;
         this.next = next;
     }
 
-    public Node() {
+    public Mexicano getPersona() {
+        return Persona;
     }
 
-    public int getValue() {
-        return value;
-    }
-
-    public void setValue(int value) {
-        this.value = value;
+    public void setPersona(Mexicano Persona) {
+        this.Persona = Persona;
     }
 
     public Node getNext() {
@@ -40,9 +37,7 @@ public class Node {
 
     @Override
     public String toString() {
-        return "Node{" + "value=" + value + ", next=" + next + '}';
+        return "Node{" + "Persona=" + Persona + ", next=" + next + '}';
     }
-    
-    
-    
+
 }
