@@ -34,8 +34,11 @@ public class HiloP extends Thread {
     protected Pila pila3 = new Pila();
     protected Pila pila4 = new Pila();
     protected Pila pila5 = new Pila();
-    
-    protected Cola Aviones = new Cola();
+    protected Pila pila6 = new Pila();
+    protected Pila pila7 = new Pila();
+    protected Pila pila8 = new Pila();
+    protected Pila pila9 = new Pila();
+    protected Pila pila10 = new Pila();
 
     public HiloP(ArrayList<JPanel> Dialogs, ArrayList<JLabel> Labels, ArrayList<Mexicano> Personas, int contadorD, int contadorL) {
         this.Dialogs = Dialogs;
@@ -108,7 +111,9 @@ public class HiloP extends Thread {
 
     @Override
     public void run() {
-
+        Cola Aviones = new Cola();
+        File n = new File("./Avion.jpg");
+        Image img2 = Toolkit.getDefaultToolkit().createImage(n.getPath()).getScaledInstance(316, 149, 0);
         try {
             while (vive) {
                 if (Personas.get(contadorD).Departed == false) {
@@ -120,6 +125,81 @@ public class HiloP extends Thread {
 
                     if (contadorD >= 1 || contadorD <= 4) {
                         pila1.push(Personas.get(contadorD));
+                    }
+
+                    if (contadorD == 5) {
+                        pila2.setHead(new Node(Personas.get(5)));
+                    }
+
+                    if (contadorD >= 6 || contadorD <= 9) {
+                        pila2.push(Personas.get(contadorD));
+                    }
+
+                    if (contadorD == 10) {
+                        pila3.setHead(new Node(Personas.get(10)));
+                    }
+
+                    if (contadorD >= 11 || contadorD <= 14) {
+                        pila3.push(Personas.get(contadorD));
+                    }
+
+                    if (contadorD == 15) {
+                        pila4.setHead(new Node(Personas.get(15)));
+                    }
+
+                    if (contadorD >= 16 || contadorD <= 19) {
+                        pila4.push(Personas.get(contadorD));
+                    }
+
+                    if (contadorD == 20) {
+                        pila5.setHead(new Node(Personas.get(20)));
+                    }
+
+                    if (contadorD >= 21 || contadorD <= 24) {
+                        pila5.push(Personas.get(contadorD));
+                    }
+
+                    if (contadorD == 25) {
+                        pila6.setHead(new Node(Personas.get(25)));
+                    }
+
+                    if (contadorD >= 26 || contadorD <= 29) {
+                        pila6.push(Personas.get(contadorD));
+                    }
+
+                    if (contadorD == 30) {
+                        pila7.setHead(new Node(Personas.get(30)));
+                    }
+
+                    if (contadorD >= 31 || contadorD <= 34) {
+                        pila7.push(Personas.get(contadorD));
+                    }
+
+                    if (contadorD == 35) {
+                        pila8.setHead(new Node(Personas.get(35)));
+                    }
+
+                    if (contadorD >= 36 || contadorD <= 39) {
+                        pila8.push(Personas.get(contadorD));
+                    }
+
+                    if (contadorD == 40) {
+                        pila9.setHead(new Node(Personas.get(40)));
+                    }
+
+                    if (contadorD >= 41 || contadorD <= 44) {
+                        pila9.push(Personas.get(contadorD));
+                    }
+                    if (contadorD == 45) {
+                        pila10.setHead(new Node(Personas.get(0)));
+                    }
+
+                    if (contadorD >= 46 || contadorD <= 49) {
+                        pila10.push(Personas.get(contadorD));
+                    }
+
+                    if (contadorD == 50) {
+                        pila1.setHead(new Node(Personas.get(50)));
                     }
 
                     contadorD++;
@@ -138,12 +218,11 @@ public class HiloP extends Thread {
                         HiloL LableH10;
                         contadorL++;
 
-                        
-                        
                         if (contadorD == 5) {
 
                             LableH1 = new HiloL(Labels.get(0), contadorL);
                             LableH1.run();
+
 
                             Dialogs.get(0).setBackground(Color.red);
                             for (int i = 1; i <= 5; i++) {
@@ -152,15 +231,16 @@ public class HiloP extends Thread {
                                 Dialogs.get(i).setBackground(Color.red);
 
                             }
-                            
-                            LableH1.setAired(true);
+
                         }
 
                         if (contadorD == 10) {
-                            
+
                             LableH2 = new HiloL(Labels.get(1), contadorL);
                             LableH2.run();
-                            
+
+
+                            Dialogs.get(5).setBackground(Color.red);
                             for (int i = 1; i <= 5; i++) {
 
                                 System.out.println(pila2.pop());
@@ -170,10 +250,12 @@ public class HiloP extends Thread {
                         }
 
                         if (contadorD == 15) {
-                            
+
                             LableH3 = new HiloL(Labels.get(2), contadorL);
                             LableH3.run();
-                            
+
+
+                            Dialogs.get(10).setBackground(Color.red);
                             for (int i = 1; i <= 5; i++) {
 
                                 System.out.println(pila3.pop());
@@ -183,10 +265,11 @@ public class HiloP extends Thread {
                         }
 
                         if (contadorD == 20) {
-                            
+
                             LableH4 = new HiloL(Labels.get(3), contadorL);
                             LableH4.run();
-                            
+
+
                             for (int i = 1; i <= 5; i++) {
 
                                 System.out.println(pila4.pop());
@@ -196,78 +279,90 @@ public class HiloP extends Thread {
                         }
 
                         if (contadorD == 25) {
-                            
+
                             LableH5 = new HiloL(Labels.get(4), contadorL);
                             LableH5.run();
-                            
+
+
                             for (int i = 1; i <= 5; i++) {
 
-                                System.out.println(pila4.pop());
+                                System.out.println(pila5.pop());
                                 Dialogs.get(i + 20).setBackground(Color.red);
 
                             }
                         }
 
                         if (contadorD == 30) {
-                            
-                            LableH6= new HiloL(Labels.get(5), contadorL);
+
+                            LableH6 = new HiloL(Labels.get(5), contadorL);
                             LableH6.run();
-                            
+
+                            Aviones.Queue(pila6);
+
                             for (int i = 1; i <= 5; i++) {
 
-                                System.out.println(pila4.pop());
+                                System.out.println(pila6.pop());
                                 Dialogs.get(i + 25).setBackground(Color.red);
 
                             }
-                            
+
                         }
 
                         if (contadorD == 35) {
-                            
-                            LableH7= new HiloL(Labels.get(6), contadorL);
+
+                            LableH7 = new HiloL(Labels.get(6), contadorL);
                             LableH7.run();
-                            
+
+                            Aviones.Queue(pila7);
+
                             for (int i = 1; i <= 5; i++) {
 
-                                System.out.println(pila4.pop());
+                                System.out.println(pila7.pop());
                                 Dialogs.get(i + 30).setBackground(Color.red);
 
                             }
                         }
 
                         if (contadorD == 40) {
-                            
-                            LableH8= new HiloL(Labels.get(7), contadorL);
+
+                            LableH8 = new HiloL(Labels.get(7), contadorL);
                             LableH8.run();
+
+                            Aviones.Queue(pila8);
+
                             for (int i = 1; i <= 5; i++) {
 
-                                System.out.println(pila4.pop());
+                                System.out.println(pila8.pop());
                                 Dialogs.get(i + 35).setBackground(Color.red);
 
                             }
                         }
 
                         if (contadorD == 45) {
-                            
-                            LableH9= new HiloL(Labels.get(8), contadorL);
+
+                            LableH9 = new HiloL(Labels.get(8), contadorL);
                             LableH9.run();
-                            
+
+                            Aviones.Queue(pila9);
+
                             for (int i = 1; i <= 5; i++) {
 
-                                System.out.println(pila4.pop());
+                                System.out.println(pila9.pop());
                                 Dialogs.get(i + 40).setBackground(Color.red);
 
                             }
                         }
 
                         if (contadorD == 50) {
-                            
-                            LableH10= new HiloL(Labels.get(9), contadorL);
+
+                            LableH10 = new HiloL(Labels.get(9), contadorL);
                             LableH10.run();
-                            
+
+                            Aviones.Queue(pila10);
+
                             for (int i = 1; i <= 5; i++) {
 
-                                System.out.println(pila4.pop());
+                                System.out.println(pila10.pop());
                                 Dialogs.get(i + 45).setBackground(Color.red);
 
                             }

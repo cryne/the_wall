@@ -72,11 +72,6 @@ public class HiloL extends Thread {
 
         contador++;
 
-        if (isAired() == true) {
-            File n = new File("./Avion.jpg");
-            Image img2 = Toolkit.getDefaultToolkit().createImage(n.getPath()).getScaledInstance(316, 149, 0);
-            Label.setIcon(new ImageIcon(img2));
-        }
     }
 
 }
