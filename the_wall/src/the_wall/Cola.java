@@ -46,9 +46,10 @@ public class Cola {
         if (Head == null){
             Head=nuevo;
             fondo=nuevo;
+        }else{
+            fondo.setNext(nuevo);
+            fondo=nuevo;
         }
-        fondo.setNext(nuevo);
-        fondo=nuevo;
     }
     public Object Dequeue() {
         if (Head !=null) {

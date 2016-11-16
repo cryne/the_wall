@@ -37,10 +37,11 @@ public class Pila {
         Node nuevo=new Node(cola);
         if (Head== null){
             Head=nuevo;
-        }
+        }else{
         Node x=Head;
         nuevo.setNext(x);
         Head=nuevo;
+        }
         
     }
     public Object pop() {
