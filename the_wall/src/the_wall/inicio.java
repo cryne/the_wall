@@ -5,7 +5,6 @@
  */
 package the_wall;
 
-import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.EOFException;
@@ -17,9 +16,11 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-
+     
 /**
  *
  * @author Romero
@@ -59,6 +60,69 @@ public class inicio extends javax.swing.JFrame {
         {
             ex.printStackTrace();
         }
+        
+        Panels.add(Pasajero1);
+        Panels.add(Pasajero2);
+        Panels.add(Pasajero3);
+        Panels.add(Pasajero4);
+        Panels.add(Pasajero5);
+        Panels.add(Pasajero6);
+        Panels.add(Pasajero7);
+        Panels.add(Pasajero8);
+        Panels.add(Pasajero9);
+        Panels.add(Pasajero10);
+        Panels.add(Pasajero11);
+        Panels.add(Pasajero12);
+        Panels.add(Pasajero13);
+        Panels.add(Pasajero14);
+        Panels.add(Pasajero15);
+        Panels.add(Pasajero16);
+        Panels.add(Pasajero17);
+        Panels.add(Pasajero18);
+        Panels.add(Pasajero19);
+        Panels.add(Pasajero20);
+        Panels.add(Pasajero21);
+        Panels.add(Pasajero22);
+        Panels.add(Pasajero23);
+        Panels.add(Pasajero24);
+        Panels.add(Pasajero25);
+        Panels.add(Pasajero26);
+        Panels.add(Pasajero27);
+        Panels.add(Pasajero28);
+        Panels.add(Pasajero29);
+        Panels.add(Pasajero30);
+        Panels.add(Pasajero31);
+        Panels.add(Pasajero32);
+        Panels.add(Pasajero33);
+        Panels.add(Pasajero34);
+        Panels.add(Pasajero35);
+        Panels.add(Pasajero36);
+        Panels.add(Pasajero37);
+        Panels.add(Pasajero38);
+        Panels.add(Pasajero39);
+        Panels.add(Pasajero40);
+        Panels.add(Pasajero41);
+        Panels.add(Pasajero42);
+        Panels.add(Pasajero43);
+        Panels.add(Pasajero44);
+        Panels.add(Pasajero45);
+        Panels.add(Pasajero46);
+        Panels.add(Pasajero47);
+        Panels.add(Pasajero48);
+        Panels.add(Pasajero49);
+        Panels.add(Pasajero50);
+        
+        Labels.add(Avion1);
+        Labels.add(Avion2);
+        Labels.add(Avion3);
+        Labels.add(Avion4);
+        Labels.add(Avion5);
+        Labels.add(Avion6);
+        Labels.add(Avion7);
+        Labels.add(Avion8);
+        Labels.add(Avion9);
+        Labels.add(Avion10);
+        
     }
 
     /**
@@ -144,6 +208,7 @@ public class inicio extends javax.swing.JFrame {
         Pasajero48 = new javax.swing.JPanel();
         Pasajero49 = new javax.swing.JPanel();
         Pasajero50 = new javax.swing.JPanel();
+        jButton4 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
@@ -948,6 +1013,13 @@ public class inicio extends javax.swing.JFrame {
             .addGap(0, 33, Short.MAX_VALUE)
         );
 
+        jButton4.setText("Initiate Process of Deportation!");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout AvionesLayout = new javax.swing.GroupLayout(Aviones.getContentPane());
         Aviones.getContentPane().setLayout(AvionesLayout);
         AvionesLayout.setHorizontalGroup(
@@ -1087,6 +1159,10 @@ public class inicio extends javax.swing.JFrame {
                             .addComponent(Avion5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(6, 6, 6)))
                 .addContainerGap(76, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AvionesLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton4)
+                .addGap(762, 762, 762))
         );
         AvionesLayout.setVerticalGroup(
             AvionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1185,7 +1261,9 @@ public class inicio extends javax.swing.JFrame {
                             .addComponent(Pasajero28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Pasajero29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Pasajero30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(89, 89, 89))
+                .addGap(18, 18, 18)
+                .addComponent(jButton4)
+                .addGap(42, 42, 42))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -1345,6 +1423,25 @@ public class inicio extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1MouseClicked
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        
+        int contadorP = 0;
+        int contadorL = 0;
+        
+        /*ArrayList<Mexicano> temp = new ArrayList();
+        
+        for (int i = 0; i < lista.size(); i++) {
+            if (lista.get(i).Departed == false) {
+                temp.add(lista.get(i));
+                lista.get(i).setDeparted(true);
+            }
+        }*/
+        
+        (new HiloP(Panels, Labels, lista, contadorP,contadorL)).start();
+        
+        
+    }//GEN-LAST:event_jButton4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1448,6 +1545,7 @@ public class inicio extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1463,4 +1561,6 @@ public class inicio extends javax.swing.JFrame {
     private javax.swing.JTextField tf_nation;
     // End of variables declaration//GEN-END:variables
     ArrayList <Mexicano> lista=new ArrayList();
+    ArrayList<JPanel> Panels = new ArrayList();
+    ArrayList<JLabel> Labels = new ArrayList();
 }

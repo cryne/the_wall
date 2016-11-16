@@ -12,10 +12,16 @@ package the_wall;
 public class Node {
     
     Mexicano Persona;
+    HiloL Hilo;
     Node next;
 
     public Node(Mexicano Persona, Node next) {
         this.Persona = Persona;
+        this.next = next;
+    }
+
+    public Node(HiloL Hilo, Node next) {
+        this.Hilo = Hilo;
         this.next = next;
     }
 
