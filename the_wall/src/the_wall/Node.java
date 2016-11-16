@@ -12,7 +12,7 @@ package the_wall;
 public class Node {
     
     Mexicano Persona;
-    HiloL Hilo;
+    Pila pila;
     Node next;
 
     public Node(Mexicano Persona, Node next) {
@@ -20,11 +20,20 @@ public class Node {
         this.next = next;
     }
 
-    public Node(HiloL Hilo, Node next) {
-        this.Hilo = Hilo;
+    public Node(Mexicano Persona, Pila pila, Node next) {
+        this.Persona = Persona;
+        this.pila = pila;
         this.next = next;
     }
 
+    public Pila getPila() {
+        return pila;
+    }
+
+    public void setPila(Pila pila) {
+        this.pila = pila;
+    }
+    
     public Node(Object mex) {
         Mexicano persona=(Mexicano)mex;
         this.Persona = Persona;

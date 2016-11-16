@@ -39,8 +39,9 @@ public class Pila {
             Head=nuevo;
         }
         Node x=Head;
+        nuevo.setNext(x);
         Head=nuevo;
-        Head.setNext(x);
+        
     }
     public Object pop() {
         if (Head !=null) {
